@@ -1,25 +1,61 @@
 <!DOCTYPE html>
-<document>
+<html>
 
-    <head>
-        <title>douban yyets extension test page</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="douban.css">
-        <script src="jquery-3.1.0.min.js"></script>
-        <script src="vue.js"></script>
+<head>
+    <title>douban yyets extension test page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="douban.css">
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="vue.js"></script>
 
-    </head>
+</head>
 
-    <body>
+<body>
+
+    <section id="extensionWrap">
+
+        <div class='head'>
+            <span class='name' v-model='name'>{{name}}</span>
+            <span class='status' v-model='status'>{{status}}</span>
+            <span class='last_modified' v-model='lastModifiedTime'>{{lastModifiedTime}}</span>
+        </div>
+
+        <div class='tab'>
+            <div class='tab_head'>
+                <ul>
+                    <li v-for='season in seasons'>{{season}}</li>
+                </ul>
+            </div>
+
+            <div class='tab_content'>
+                <ul>
+                    <li v-for='resolution in resolutions'>
+                        <div class='resolution_head'>{{resolution}}</div>
+                        <ul>
+
+                        </ul>
+                    </li>
+                </ul>
 
 
-        <section id="movieExtension" v-model="tvName">
-            aaa
-        </section>
+            </div>
+
+        </div>
 
 
-        <script src="douban.js"></script>
-    </body>
 
 
-</document>
+
+    </section>
+
+
+
+
+
+
+
+
+    <script src="douban.js"></script>
+</body>
+
+</html>
