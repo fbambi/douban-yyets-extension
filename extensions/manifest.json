@@ -1,13 +1,22 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 2,
     "name": "douban-yyets",
     "description": "a chrome extension which can look tv/movie info of yyets on douban movie",
     "version": "0.1",
     "browser_action": {
         "default_icon": "icon.png"
     },
+    "permissions": [
+        "http://*/",
+        "https://*/",
+        "tabs"
+    ],
+    "background": {
+        "scripts": ["jquery-3.1.0.min.js", "background.js"]
+    },
     "content_scripts": [{
-        "matches": ["movie.douban.com"],
-        "js": ["jquery-3.1.0.min.js","vue.js","douban.js"]
+        "matches": ["<all_urls>"],
+        "js": ["jquery-3.1.0.min.js", "vue.js", "ExtensionLibrary.js", "douban.js"],
+        "all_frames": true
     }]
 }

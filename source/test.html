@@ -12,7 +12,7 @@
 
 <body>
 
-    <section id="extensionWrap">
+    <div id="extensionWrap">
 
         <div class='head'>
             <span class='name' v-model='name'>{{name}}</span>
@@ -20,7 +20,9 @@
             <span class='last_modified' v-model='lastModifiedTime'>{{lastModifiedTime}}</span>
         </div>
 
-        <div class='tab'>
+        <!-- season nav -->
+
+        <section class='tab'>
             <div class='tab_head'>
                 <ul>
                     <li v-for='season in seasons'>{{season}}</li>
@@ -36,17 +38,24 @@
                         </ul>
                     </li>
                 </ul>
-
-
             </div>
+        </section>
 
-        </div>
+        <!-- download link content -->
+
+        <section class="download_link">
+            <li v-for="link in links"></li>
+
+        </section>
 
 
 
 
 
-    </section>
+
+    </div>
+
+
 
 
 
