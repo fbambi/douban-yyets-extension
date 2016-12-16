@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.extension_wrap {
+    border: solid 1px black;
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
+
+.name_en, .name_cn {
+    font-size: 20px;
+    margin-right: 6px;
+    color: #0b72c3;
+}
+
+.head div {
+    display: block;
+    font-size: 14px;
+}
+
+.tab {
+    margin-top: 10px;
+}
+
+.tab ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.tab_season {
+    border: solid 1px blue;
+    line-height: 30px;
+}
+
+.tab_season li {
+    border:solid 1px transparent;
+    padding: 6px;
+}
+
+.tab_season li.tab_season_active {
+    border: solid 1px blue;
+    border-bottom: 0px;
+}
+
+.tab_resolution {
+    border: solid 1px black;
+    padding: 6px;
+    margin: 10px 0;
+}
+
+.tab_resolution ul li{
+    padding:6px;
+}
+
+.tab_resolution_active{
+    background:lightblue;
+    border-radius:3px;
+}
+
+
+
+.download_link * {
+    vertical-align: middle;
+}
+
+.download_link li {
+    display: inline-block;
+}
+
+.download_link li span:nth-child(2) {
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 60%;
+}

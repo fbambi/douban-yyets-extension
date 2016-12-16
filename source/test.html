@@ -12,31 +12,30 @@
 
 <body>
 
-    <div id="extensionWrap">
+    <div id="extensionWrap" class="extension_wrap">
 
         <div class='head'>
-            <span class='name' v-model='name'>{{name}}</span>
-            <span class='status' v-model='status'>{{status}}</span>
-            <span class='last_modified' v-model='lastModifiedTime'>{{lastModifiedTime}}</span>
+            <span class='name_cn'>{{name_cn}}</span>
+            <span class='name_en'>{{name_en}}</span>
+            <div>
+                <span class='status'>{{status}}</span>
+                <span class='update'>最后更新于 {{update}}</span>
+            </div>
+
         </div>
 
         <!-- season nav -->
 
         <section class='tab'>
-            <div class='tab_head'>
+            <div class='tab_season'>
                 <ul>
-                    <li v-for='season in seasons'>{{season}}</li>
+                    <li data-type={{season}} :class='{tab_season_active:curSeasonIndex==$index}' v-on:click.stop.prevent="changeSeason($event,$index)" v-for='season in seasons'>{{season}}</li>
                 </ul>
             </div>
 
-            <div class='tab_content'>
+            <div class='tab_resolution'>
                 <ul>
-                    <li v-for='resolution in resolutions'>
-                        <div class='resolution_head'>{{resolution}}</div>
-                        <ul>
-
-                        </ul>
-                    </li>
+                    <li data-type={{resolution}} :class='{tab_resolution_active:curResolutionIndex==$index}' v-on:click.stop.prevent="changeResolution($event,$index)" v-for='resolution in resolutions'>{{resolution.toUpperCase()}}</li>
                 </ul>
             </div>
         </section>
@@ -44,7 +43,13 @@
         <!-- download link content -->
 
         <section class="download_link">
-            <li v-for="link in links"></li>
+            <ul>
+                <li v-for="link in links">
+                    <span>{{link.name}}</span>
+                    <span>{{link.link}}</span>
+                </li>
+            </ul>
+
 
         </section>
 
@@ -63,7 +68,7 @@
 
 
 
-
+    <script src="testData.js"></script>
     <script src="douban.js"></script>
 </body>
 
