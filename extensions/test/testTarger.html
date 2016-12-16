@@ -1,0 +1,749 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="http://js.rrsub.net/style/layout.css" rel="stylesheet" type="text/css" />
+    <link href="http://js.rrsub.net/style/style.css" rel="stylesheet" type="text/css" />
+    <script src="http://js.rrsub.net/js/jquery-1.7.1.min.js" charset="utf-8"></script>
+    <script src="http://js.rrsub.net/js/global.js?v=20160922" charset="utf-8"></script>
+    <title>指定幸存者,搜索结果页</title>
+    <meta name="keywords" content="连载,RMVB,HR-HDTV,MP4,MKV,720P,1080P,迅雷,电驴,磁力,网盘,字幕,下载,美女在线观看">
+    <meta name="description" content="ZiMuZu字幕组网站,www.zimuzu.tv是一群由海外留学生于2015年1月1号组建的字幕组分享网站,以翻译最新最快影 视剧为兴趣爱好,并且免费分享给广大网友和爱好者，欢迎大家的加入">
+</head>
+
+<body>
+    <script>
+        var uri = document.location.href.toLowerCase();
+        var na = ['/release/', '/user/reg', '/work/'];
+        var na_ga = ['keyword=mozu', 'keyword=+%e6%98%9f%e9%99%85%e7%a9%bf%e8%b6%8a', '/resource/26205', '/resource/33537', '/resource/31560', '/resource/list/23343', '/resource/list/11133', '/resource/list/33699', '/bbs/'];
+
+        function is_a() {
+            for (var i in na)
+                if (uri.indexOf(na[i]) >= 0) return false;
+            return true;
+        }
+
+        function is_ga_a() {
+            var t = na.concat(na_ga);
+            for (var i in t)
+                if (uri.indexOf(t[i]) >= 0) return false;
+            return true;
+        }
+    </script>
+
+    <div id="floatAD_l" class="couplet couplet_l" style="width:160px;">
+        <script type="text/javascript">
+            //if(is_ga_a()) document.write('<script src="http://g.ousns.net/ga-160-left.js?321" type="text/javascript"><\/script>');
+        </script>
+        <div id="zimuzu_160_600_a" style="width:160px;height:600px;">
+            <script type="text/javascript" src="http://pmp.adinall.com/zimuzu_160_600_a.js"></script>
+        </div>
+    </div>
+
+    <div id="floatAD_r" class="couplet couplet_l" style="width:160px;">
+        <!--
+<script type="text/javascript">
+if(is_ga_a()) document.write('<script src="http://g.ousns.net/ga-160-right.js?321" type="text/javascript"><\/script>');
+</script>
+-->
+    </div>
+
+    <style>
+        .couplet {
+            position: fixed;
+            z-index: 99999;
+        }
+    </style>
+
+    <script type="text/javascript">
+        if (is_ga_a()) {
+            var min_w = 1330;
+            GLOBAL.JQUERY.FloatAD(null, null, null, 20);
+            if ($(window).width() < min_w) {
+                $('#floatAD_l').hide();
+                $('#floatAD_r').hide();
+                $('#floatAD_l').remove();
+                $('#floatAD_r').remove();
+            }
+            $(document).ready(function() {
+                if ($(window).width() < min_w) {
+                    $('#floatAD_l').hide();
+                    $('#floatAD_r').hide();
+                    $('#floatAD_l').remove();
+                    $('#floatAD_r').remove();
+                }
+                $(window).trigger('resize');
+            });
+        } else {
+            $('#floatAD_l').hide();
+            $('#floatAD_r').hide();
+            $('#floatAD_l').remove();
+            $('#floatAD_r').remove();
+        }
+    </script>
+
+    <script type="text/javascript">
+        document.write('<a style="display:none!important" id="tanx-a-mm_111117185_10092486_33642254"></a>');
+        tanx_s = document.createElement("script");
+        tanx_s.type = "text/javascript";
+        tanx_s.charset = "gbk";
+        tanx_s.id = "tanx-s-mm_111117185_10092486_33642254";
+        tanx_s.async = true;
+        tanx_s.src = "http://p.tanx.com/ex?i=mm_111117185_10092486_33642254";
+        tanx_h = document.getElementsByTagName("head")[0];
+        if (tanx_h) tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+    </script>
+
+    <script type="text/javascript">
+        /*
+        //rich
+        //if(!GLOBAL.AdUtils.is_inside_man() && is_a())
+        if(is_a())
+        {
+            var ads = new Array();
+            ads.push('<script charset="gbk" src="http://p.tanx.com/ex?i=mm_111117185_10092486_33642254"><\/script>');
+            ads.push('<script charset="gbk" src="http://p.tanx.com/ex?i=mm_111117185_10092486_33642254"><\/script>');
+            ads.push('<script charset="gbk" src="http://p.tanx.com/ex?i=mm_111117185_10092486_33642254"><\/script>');
+            ads.push('<script type="text/javascript" src="http://g.ousns.net/rich-300.js?123"><\/script>');
+            GLOBAL.AdUtils.rich(ads, 'zmz_rich');
+        }
+        */
+    </script>
+
+    <div class="top-box">
+        <div class="header">
+            <div class="w">
+                <h1 class="fl"><a href="/"><img id="logo"></a></h1>
+                <form name="search" action="/search/index" method="get" class="fl corner search-box" target="_blank">
+                    <input type="text" size="20" class="keywords" name="keyword" autocomplete='off' placeholder="請輸入搜尋關鍵詞" />
+                    <input type="submit" class="submit">
+                    <div class="search-list" style="display:none;"></div>
+                    <ul id="top_search_list" style="display:none;"></ul>
+                    <input type="hidden" name="search_type" id="search_type" value="">
+                </form>
+                <div class="fr top-login">
+                    <!-- 未登录 -->
+                    <div class="top-login-before" style="display:none;">
+                        <div class="u"><em class="ico user-ico"></em><a href="/user/login">登入</a>/ <a href="/user/reg">註冊</a></div>
+                    </div>
+                    <!-- 未登录 -->
+                    <!-- 已登录 -->
+                    <div class="top-login-after" style=" display:none;">
+                        <!-- <a href="/user/sign" class="qiandao-ico">签到升级</a><span><em class="ico user-ico"></em><font id="top_nickname"></font></span> <span id="user_level"></span> <span>（<a id="logout" href="javascript:void();">註銷</a>）</span> <a href='/user/user/mymessage'><span>消息（<font id="navbar_msg"></font>）</span><span><a href="/user/invite">邀请</a></span></a>
+          <dl class="user-release"> <dt>發佈</dt> <dd> <ul id="post_List"></ul> </dd> </dl> -->
+                        <div class="fl u">
+                        </div>
+                        <a class="fl e" href="/user/user">
+                            <!-- <em class="corner">99</em>
+            <div class="user-pop p-email">
+                <div class="user-pop-con corner">
+                    <span class="ar"></span>
+                      <ul>
+                          <li><a href='/user/message'><span>私信</span></a><strong class="corner">10</strong></li>
+                          <li><span>评论回复</span><strong class="corner">10</strong></li>
+                          <li><span>好友动态</span><strong class="corner">10</strong></li>
+                          <li><span>求档回复</span><strong class="corner">10</strong></li>
+                          <li><span>好友申请</span><strong class="corner">10</strong></li>
+                          <li><span>系统通知</span><strong class="corner">10</strong></li>
+                          <li class="link tc"><a href="javascript:;" class="corner">忽略以上提醒</a></li>
+                      </ul>
+                  </div>
+              </div> -->
+                        </a>
+                        <div class="fr fb">
+                            我要发布<em></em>
+                            <div class="user-pop p-release">
+                                <div class="user-pop-con corner">
+                                    <span class="ar"></span>
+                                    <ul id="post_List">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 已登录 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="notice">
+            <div class="w">
+                <p><strong class="f0">网站公告：</strong> <a target="_blank"><span></span></a></p>
+                <a class="close">x</a>
+            </div>
+        </div>
+
+        <style>
+            .signin-tips {
+                border-radius: 5px;
+                border: 1px solid #a6884c;
+                background: #fab639;
+                color: #fff;
+                width: 436px;
+                height: 95px;
+                box-shadow: 3px 3px 0 rgba(0, 0, 0, .3);
+                z-index: 999;
+            }
+
+            .signin-tips .fl {
+                font-size: 60px;
+                font-weight: bold;
+                width: 40%;
+                text-align: center;
+                margin-top: 36px;
+                text-shadow: 1px 1px 0 #333;
+            }
+
+            .signin-tips .fr {
+                width: 60%;
+                font-size: 17px;
+                line-height: 150%;
+                margin-top: 17px;
+                text-shadow: 1px 1px 0 #666;
+            }
+
+            .signin-tips .fr b {
+                font-size: 25px;
+            }
+        </style>
+        <script>
+            $('#logo').attr('src', GLOBAL.CONST.RES_URL + 'images/logo.png');
+            GLOBAL.JQUERY.SEARCHTIPS(250, function() {
+                $('.search-list').hide()
+            });
+
+            $.getJSON(GLOBAL.CONST.WWW_URL + 'public/hotkeyword', function(R) {
+                var data = R.data;
+                var html = '<li><a href="http://www.6.cn/coop/pub/?src=yyetst" target="_blank" rel="nofollow"><span style="color:#ED8600">1</span>美女在线视频</a></li>\
+';
+                for (key in data) {
+                    key = parseInt(key);
+                    if (typeof data[key].keyword !== 'undefined') html += '<li><a href="/search?keyword=' + encodeURIComponent(data[key].keyword) + '"><span class="corner50">' + (key + 2) + '</span>' + data[key].keyword + '</a></li>';
+                }
+                $('.search-list').html('<ul class="corner box key-result">' + html + '</ul>');
+            });
+            $('form[name=search] .keywords').click(function() {
+                if ($('ul#top_search_list').css('display') != 'none') return;
+                $('.search-list').show();
+                $(this).parent().click(function(e) {
+                    e.stopPropagation();
+                });
+                $('body').one('click', function() {
+                    $('.search-list').hide();
+                })
+            });
+            var load = 0;
+            var navbar_a, navbar_b, tips;
+            $.ajax({
+                url: '/user/login/getCurUserTopInfo',
+                async: false,
+                dataType: "json",
+                success: function(R) {
+                    var _data = R.data;
+                    if (R.status == 1) {
+                        var _userinfo = R.data.userinfo;
+                        var _usercount = R.data.usercount;
+
+                        var sex_ico = {
+                            0: 'ico_secret.png',
+                            1: 'ico_male.png',
+                            2: 'ico_female.png'
+                        }
+                        var _sex = sex_ico[_userinfo.sex];
+                        if (_sex) _sex = '<img src="' + GLOBAL.CONST.RES_URL + 'images/' + _sex + '" />';
+                        var main_group_html = _userinfo.main_group_name ? '<li><img src="' + GLOBAL.CONST.RES_URL + 'images/ico_le1.png">' + _userinfo.main_group_name + '</li>' : '';
+                        var kuozhan_group_html = '';
+                        for (k in _userinfo.kuozhan_group_info) {
+                            kuozhan_group_html += '<li><img src="' + GLOBAL.CONST.RES_URL + 'images/ico_le2.png">' + _userinfo.kuozhan_group_info[k] + '</li>';
+                        }
+
+                        var html = '<a href="/user/user" class="f8"><img src="' + _userinfo.avatar_t + '" class="av corner50" />' + _userinfo.nickname +
+                            '</a> <div class="user-pop p-profile"> <div class="user-pop-con corner"> <span class="ar"></span> <div class="avatar tc"> <a href="/user/setting/avatar"><img title="点击修改头像" src="' + _userinfo.avatar_m +
+                            '" /></a> </div> <div class="name"><strong class="f14">' + _userinfo.nickname + '</strong>' + _sex + '<span class="corner">' + _userinfo.common_group_name + '</span></div> <ul class="le"> ' + main_group_html +
+                            kuozhan_group_html + '</ul> <div class="data clearfix"> <ul> <li><span>12</span>动态</li> <li><span>126</span>评论</li> <li><span>' + _userinfo.point + '</span>积分</li> <li><span>' + _usercount.cont_login + (_data.upgrade_day >
+                                0 ? ('->' + _data.upgrade_day) : '') + '</span>登录天数</li> </ul> </div> <div class="clearfix sp"> <a id="logout" class="fr"><img src="' + GLOBAL.CONST.RES_URL +
+                            'images/ico_quite.png">退出登录</a> <a href="/user/user"><img src="' + GLOBAL.CONST.RES_URL + 'images/ico_setting.png">个人设置</a> </div> </div> </div>';
+                        GLOBAL.CONST.USER = _data.userinfo;
+                        $('.top-login-after').show().find('div.u').html(html).mouseover(function() {
+                            $(this).find('.user-pop').show();
+                            if (_data.post != '') $('#post_List').html(_data.post);
+                        }).mouseout(function() {
+                            $(this).find('.user-pop').hide();
+                        });
+
+                        if (_data.post != '') $('#post_List').html(_data.post);
+                        navbar_a = _data.navbar.a;
+                        navbar_b = _data.navbar.b;
+                        load = 1;
+
+                        //每天第一次登录
+                        if (_data.new_login == 1) {
+                            var $html = $('<div class="signin-tips clearfix"> <div class="fl"> +1 </div> <div class="fr"> <p>您已登录本站<b>' + _data.usercount.cont_login + '</b>天' + (typeof _data.upgrade_day == 'number' ? '<br>距离下次升级还需要登录<b>' +
+                                _data.upgrade_day + '</b>天' : '') + '</p> </div> </div>');
+                            $('body').append($html);
+                            GLOBAL.FloatMiddel($html, 440, 96);
+                            setTimeout(function() {
+                                $html.remove();
+                            }, 5000);
+                        }
+                    } else {
+                        $('.top-login-before').show();
+                    }
+
+                    if (_data.announcement && _data.announcement.updatetime > GLOBAL.Util.getCookie('last_announ')) {
+                        $('.notice').show().find('.w span').text(_data.announcement.title).parent().attr('href', '/announcement/' + _data.announcement.id).parent().next().click(function() {
+                            $('.notice').hide();
+                            GLOBAL.Util.setCookie('last_announ', _data.announcement.updatetime, 1000 * 60 * 60 * 24 * 365);
+                        });
+                    }
+                }
+            });
+
+
+            $(document).ready(function() {
+                $('.top-login-after .fb').mouseover(function() {
+                    $(this).addClass('fb-selected');
+                }).mouseout(function() {
+                    $(this).removeClass('fb-selected');
+                })
+                $('#logout').click(function() {
+                    GLOBAL.Loading();
+                    $.getJSON('/user/logout/ajaxLogout', function(data) {
+                        if (data.status == 1) {
+                            window.history.go(0);
+                        }
+                        GLOBAL.Loading('hide');
+                    });
+                    return false;
+                });
+            });
+        </script>
+        <div style="text-align:center; margin:10px 0 15px 0;">
+            <script type="text/javascript">
+                //if(is_ga_a()) document.write('<script src="http://g.ousns.net/ga-728-t.js?232" type="text/javascript"><\/script>');
+                //tb-ssp-728-top
+                if (typeof(is_ga_a) != 'undefined' && is_ga_a()) document.write('<script charset="gbk" src="http://p.tanx.com/ex?i=mm_111117185_10092486_48076988"><\/script>');
+            </script>
+        </div>
+
+        <div class="menu-box">
+            <ul class="w">
+                <li><a href="/">首页</a></li>
+                <li channel="article"><a href="/article">资讯</a></li>
+                <li channel="subtitle"><a href="/subtitle">字幕下载</a></li>
+                <li channel="resource"><a href="/resourcelist">影视库</a></li>
+                <li channel="today"><a href="/today">今日更新</a></li>
+                <li channel='schedule'><a href="/tv/schedule">播出表</a></li>
+                <li><a href="http://www.6.cn/coop/pub/?src=yyetst" target="_blank" rel="nofollow">美女视频</a></li>
+                <!-- <li><a href="/">发现</a></li> -->
+                <!-- <li><a href="/help">互助求档</a></li> -->
+                <li><a href="/Announcement">加入字幕组</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                if (navbar_a) $('.menu-box li:first').after(navbar_a);
+                if (navbar_b) $('.menu-box li:last').after(navbar_b);
+                var matches = window.location.href.match(/http:\/\/[^/]+(\/.*)/);
+                var group_name = matches == null ? '' : matches[1].replace(/\/{2,}/m, '/');
+                var groups = {
+                    'article': '/article',
+                    'fav': '/user/fav',
+                    'subtitle': '/[a-z]subtitle',
+                    'resource': '/[a-z]resourcelist|/[a-z]resource/',
+                    'schedule': '/tv/schedule|/html/return|/html/new',
+                    'today': '/today'
+                };
+                for (key in groups) {
+                    regx = new RegExp(groups[key], 'i');
+                    if (group_name.search(regx) != -1) {
+                        $('.menu-box li[channel=' + key + '] a').addClass('cur');
+                        return true;
+                    }
+                }
+                $('.menu-box li:first a').addClass('cur');
+            });
+        </script>
+        <div style="text-align:center; margin:0 0 15px 0;">
+            <script type="text/javascript">
+                //if(is_ga_a()) document.write('<script src="http://g.ousns.net/ga-728-t.js?232" type="text/javascript"><\/script>');
+                //tb-ssp-728-top2
+                if (typeof(is_ga_a) != 'undefined' && is_ga_a()) document.write('<script charset="gbk" src="http://p.tanx.com/ex?i=mm_111117185_10092486_48076989"><\/script>');
+            </script>
+        </div>
+
+    </div>
+
+    <div class="middle-box">
+        <div class="w">
+            <div class="area-left">
+                <div class="box search-result-box">
+                    <div class="article-tab">
+                        查看：<a class="search_type" type="">全部(12)</a><a class="search_type" type="resource">影视(1)</a><a class="search_type" type="subtitle">字幕(10)</a><a class="search_type" type="article">资讯(1) </a>
+                    </div>
+                    <div class="search-result">
+                        <div id="ad1" style="display:none;text-align:center;margin:10px 0;overflow:hidden">
+                            <a target="_blank" href="http://52meiju.taobao.com/"><img src="http://img.zimuzu.tv/52meiju_700_90.jpg" /></a>
+                        </div>
+                        <script>
+                            $(function() {
+                                $('#ad1').show().insertAfter('div.search-result li:eq(4)');
+                            });
+                        </script>
+
+                        <ul>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em style="background:#0d82cb;">电视剧</em>
+                                    <div class="fl-img">
+                                        <a href="/resource/34672"><img src="http://tu.rrsub.com/ftp/2016/0901/s_86265da9747a4cddf653e2fe98ae3193.jpg"></a>
+                                    </div>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/resource/34672"><strong class="list_title">《指定幸存者》(Designated Survivor)</strong></a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1471394357</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1481818240</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/50843"><strong class="list_title">[美剧字幕]《指定幸存者第1季第10集（初校）》(Designated.Survivor.S01E10)</strong>[简体/英文/中英][ZiMuZu原创翻译]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1481817380</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1481817380</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/50777"><strong class="list_title">[美剧字幕]《指定幸存者第1季第9集（初校）》(Designated.Survivor.S01E09)</strong>[简体/英文/中英][ZiMuZu原创翻译]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1481210829</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1481210829</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/50695"><strong class="list_title">[美剧字幕]《指定幸存者第1季第8集（初校）》(Designated.Survivor.S01E08)</strong>[简体/英文/中英][ZiMuZu原创翻译]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1480602866</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1480639251</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/50496"><strong class="list_title">[美剧字幕]《指定幸存者1季第7集(初校）》(Designated.Survivor.S01E07)</strong>[/简体/英文/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1479395947</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1479397227</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/50345"><strong class="list_title">[美剧字幕]《指定幸存者1季第6集(初校）》(Designated.Survivor.S01E06)</strong>[/简体/英文/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1478791670</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1478791670</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/50148"><strong class="list_title">[美剧字幕]《指定幸存者1季第5集(初校）》(Designated.Survivor.S01E05)</strong>[/简体/英文/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1477577164</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1477638363</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/49938"><strong class="list_title">[美剧字幕]《指定幸存者1季第4集(初校）》(Designated.Survivor.S01E04)</strong>[/简体/英文/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1476368907</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1476368907</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/49655"><strong class="list_title">[美剧字幕]《指定幸存者1季第1集(精校）》(Designated.Survivor.S01E01)</strong>[/简体/英文/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1474558671</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1476272641</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/49741"><strong class="list_title">[美剧字幕]《指定幸存者1季第2集（精校）》(Designated.Survivor.S01E02)</strong>[/简体/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1475158978</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1476272577</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>字幕</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/subtitle/49832"><strong class="list_title">[美剧字幕]《指定幸存者1季第3集【720P初版字幕】》(Designated.Survivor.S01E03)</strong>[/简体/繁体/英文/中英/][]</a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1475751082</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1475751082</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="clearfix search-item">
+                                    <em>资讯</em>
+                                    <div class="fl-info">
+                                        <div class="t f14"><a href="/article/29447"><strong class="list_title">[电视剧新闻]《ABC开出首张 “新剧整季预定单” ：《指定幸存者》和《无言有爱》》</strong></a></div>
+                                        <p>发布：
+                                            <font class="f4 time">1475201151</font>
+                                        </p>
+                                        <p>更新：
+                                            <font class="f1 time">1475201151</font>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pages pages-padding">
+                        <div>&nbsp;<b></b></div>
+                    </div>
+                </div>
+            </div>
+            <div class="area-right">
+                <div style="text-align:center;">
+                    <script type="text/javascript">
+                        //if(is_ga_a()) document.write('<script src="http://g.ousns.net/ga-300.js?321" type="text/javascript"><\/script>');
+                    </script>
+                </div>
+
+
+                <!--
+<div style="margin:10px 0 0;text-align:center;">
+<style>
+.room {margin:0px auto;padding:0px;height:1030px;width:300px;font-size:12px;background-color:#fff; }
+.room li {list-style:none;width:130px;height:150px;padding:10px 10px;text-align: center;float:left;border:none;}
+.room li img{width:130px;height:96px;}
+.room li p{line-height: 21px;height: 21px;width:130px;overflow: hidden;}
+.room li span{display: block;}
+.room li span.room_l{float:left;}
+.room li span.room_r{float: right;}
+</style>
+<ul class="room"></ul>
+<script type="text/javascript">
+$.getJSON('http://v.6.cn/coop/pub/getRand.php?num=12&callback=?',function(result){
+  var html = '';
+  for(var i=0;i<result.length;i++){
+    var room_url = 'http://v.6.cn/'+result[i].rid+'/?src=yyetst';
+    html += '<li><a href="'+room_url+'" target="_blank" rel="nofollow"><img src="'+result[i].pospic+'" /></a><p><a href="'+room_url+'" target="_blank" rel="nofollow">'+result[i].username+'</a></p> <p><span class="room_l">开播</span><span class="room_r">'+result[i].starttime+'</span></p> <p><span class="room_l">房间人数</span><span class="room_r">'+result[i].count+'</span></p> </li>';
+  }
+  $('ul.room').html(html);
+});
+</script>
+</div>
+-->
+                <script type="text/javascript">
+                    //tb-300
+                    document.write('<a style="display:none!important" id="tanx-a-mm_111117185_10092486_33630706"></a>');
+                    tanx_s = document.createElement("script");
+                    tanx_s.type = "text/javascript";
+                    tanx_s.charset = "gbk";
+                    tanx_s.id = "tanx-s-mm_111117185_10092486_33630706";
+                    tanx_s.async = true;
+                    tanx_s.src = "http://p.tanx.com/ex?i=mm_111117185_10092486_33630706";
+                    tanx_h = document.getElementsByTagName("head")[0];
+                    if (tanx_h) tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+                    //tb-300-2
+                    document.write('<a style="display:none!important" id="tanx-a-mm_111117185_10092486_33638558"></a>');
+                    tanx_s = document.createElement("script");
+                    tanx_s.type = "text/javascript";
+                    tanx_s.charset = "gbk";
+                    tanx_s.id = "tanx-s-mm_111117185_10092486_33638558";
+                    tanx_s.async = true;
+                    tanx_s.src = "http://p.tanx.com/ex?i=mm_111117185_10092486_33638558";
+                    tanx_h = document.getElementsByTagName("head")[0];
+                    if (tanx_h) tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+                    //tb-300-3
+                    document.write('<a style="display:none!important" id="tanx-a-mm_111117185_10092486_33638560"></a>');
+                    tanx_s = document.createElement("script");
+                    tanx_s.type = "text/javascript";
+                    tanx_s.charset = "gbk";
+                    tanx_s.id = "tanx-s-mm_111117185_10092486_33638560";
+                    tanx_s.async = true;
+                    tanx_s.src = "http://p.tanx.com/ex?i=mm_111117185_10092486_33638560";
+                    tanx_h = document.getElementsByTagName("head")[0];
+                    if (tanx_h) tanx_h.insertBefore(tanx_s, tanx_h.firstChild);
+                </script>
+
+
+                <!-- <div class="box subtitle-serch-sidebar">
+                <h2 class="it">熱門關搜索鍵詞</h2>
+                <ul>
+                  <li><a href="/search?keyword=指定幸存者">指定幸存者</a></li><li><a href="/search?keyword=行尸走肉">行尸走肉</a></li><li><a href="/search?keyword=西部世界">西部世界</a></li><li><a href="/search?keyword=生活大爆炸">生活大爆炸</a></li><li><a href="/search?keyword=权力的游戏">权力的游戏</a></li><li><a href="/search?keyword=闪电侠">闪电侠</a></li><li><a href="/search?keyword=无耻家庭">无耻家庭</a></li><li><a href="/search?keyword=汉尼拔">汉尼拔</a></li><li><a href="/search?keyword=摩登家庭">摩登家庭</a></li><li><a href="/search?keyword=血战钢锯岭">血战钢锯岭</a></li><li><a href="/search?keyword=生死狙击">生死狙击</a></li><li><a href="/search?keyword=高堡奇人">高堡奇人</a></li><li><a href="/search?keyword=你的名字">你的名字</a></li><li><a href="/search?keyword=神盾局特工">神盾局特工</a></li><li><a href="/search?keyword=幽冥">幽冥</a></li><li><a href="/search?keyword=维京传奇">维京传奇</a></li>                </ul>
+            </div> -->
+
+                <div style="text-align:center; margin-top:10px;">
+                    <script type="text/javascript">
+                        if (is_ga_a()) document.write('<script src="http://g.ousns.net/ga-300-2.js?546" type="text/javascript"><\/script>');
+                    </script>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var keyword = '指定幸存者';
+        var query_string = 'keyword=%E6%8C%87%E5%AE%9A%E5%B9%B8%E5%AD%98%E8%80%85&type=';
+        var regx = new RegExp(keyword, 'gi');
+        var url = GLOBAL.CONST.WWW_URL + 'search';
+
+        //GLOBAL.JQUERY.RANDOMSHOW($('ul.allsearch li:first .search_info_ls'));
+
+        var build_param = function(key, value) {
+            match = false;
+            regx = new RegExp(key + '=', 'gi');
+            params = query_string.split('&');
+            for (i = 0; i < params.length; i++) {
+                if (params[i].match(regx) != null) {
+                    params[i] = key + '=' + value;
+                    match = true;
+                }
+            }
+            if (match == false) params[i] = key + '=' + value;
+            return params.join('&');
+        };
+
+        $('.list_title').each(function() { //列表中的关键字标红
+            _text = $(this).text();
+            _text = _text.replace(regx, '<font color="red">' + keyword + '</font>');
+            $(this).html(_text);
+        });
+        $('.time').each(function() { //格式化列表中的UNIX时间戳
+            _time = GLOBAL.Util.formatDate($(this).text());
+            $(this).text(_time);
+        });
+        $('input#keyword').val('指定幸存者').css('color', '#000'); //填充搜索框
+        /*switch(GLOBAL.Util.getParam('order',query_string)){
+          case 'pubtime':
+            $('#pubtime').addClass('cur');
+            $('#uptime a').attr('href',url+'?'+build_param('order','uptime'));
+            break;
+          default:
+            $('#uptime').addClass('cur');
+            $('#pubtime a').attr('href',url+'?'+build_param('order','pubtime'));
+        }*/
+        $('.search_type').each(function() { //搜索类型状态
+            type = $(this).attr('type');
+            if (GLOBAL.Util.getParam('type', query_string) == type) {
+                $(this).addClass('selected');
+                $('a.search_type[type=' + type + ']').addClass('selected').siblings().removeClass('selected');
+                $('input#type').val(type);
+            } else {
+                $(this).attr('href', url + '?' + build_param('type', type));
+            }
+        });
+    </script>
+    <div style="text-align:center;margin-top:15px">
+        <script type="text/javascript">
+            if (uri.indexOf('/today') >= 0 || uri.indexOf('/eschedule') >= 0 || (uri.indexOf('/user/') >= 0 && uri.indexOf('/user/sign') === -1)) {
+                document.write('<script src="http://g.ousns.net/ga-728-m3.js?232" type="text/javascript"><\/script>');
+            } else {
+                if (is_a()) {
+                    //tb-ssp-950x90
+                    document.write('<script charset="gbk" src="http://p.tanx.com/ex?i=mm_111117185_10092486_42796389"><\/script>');
+                }
+            }
+        </script>
+    </div>
+
+    <script src="http://g.ousns.net/ad-footer.js?8631617" type="text/javascript"></script>
+
+    <div class="lx167" style="width:1038px;margin:10px auto;background-color:#fff"></div>
+    <script>
+        GLOBAL.JQUERY.LazyLoad($('div.lx167'), function() {
+            $('div.lx167').html('<iframe src="http://www.lx167.com/index/promo_iframe" width="1038" height="147" frameborder="0"></iframe>');
+        });
+    </script>
+
+    <div class="footer">
+        <p class="tc">人人影视字幕组网站 2015@香港 <a href="http://allyingshi.com/fanyi/index.html" target="_blank">商业翻译洽谈</a> <a href="http://www.zimuzu.tv/announcement/63">联系我们</a> <a href="/Announcement">加入字幕组</a> <a href="http://app.zimuzu.tv/" target="_blank">APP手机客户端</a>            <a href="http://www.zimuzu.tv/bbs/list?fid=413">意见反馈</a> <a href="http://www.zimuzu.tv/announcement/65">账号异常申诉</a> <a href="http://www.zimuzu.tv/announcement/67">申请本站公共API接口</a>
+            <div style="width:1px;overflow: hidden;height:1px;">
+                <script src="http://s95.cnzz.com/z_stat.php?id=1254180690&web_id=1254180690" language="JavaScript"></script>
+            </div>
+        </p>
+    </div>
+    <style>
+        .WB_follow_ex,
+        .WB_follow_ex .follow_btn_line {
+            margin: 0 auto !important;
+        }
+    </style>
+
+
+<script src='../jquery-3.1.0.min.js'></script>
+<script src='getResult.js'></script>
+</body>
+
+</html>
